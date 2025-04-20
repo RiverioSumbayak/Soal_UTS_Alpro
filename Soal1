@@ -2,53 +2,53 @@
 #include <string>
 using namespace std;
 
-bool isDigitOnly(const string& number) {
-    for (char c : number) {
+bool hanya_angka(const string& s) {
+    for (char c : s) {
         if (!isdigit(c)) return false;
     }
     return true;
 }
 
-string getCardType(const string& number) {
-    if (number.length() == 14 && number.substr(0, 2) == "65")
+string tipe_kartu(const string& s) {
+    if (s.length() == 14 && s.substr(0, 2) == "65")
         return "NUSANTARA";
-    else if (number.length() == 16 && 
-            (number.substr(0, 2) == "77" || number.substr(0, 2) == "78"))
+    else if (s.length() == 16 && 
+            (s.substr(0, 2) == "77" || s.substr(0, 2) == "78"))
         return "GARUDA";
-    else if (number.length() == 15 && number.substr(0, 2) == "91")
+    else if (s.length() == 15 && s.substr(0, 2) == "91")
         return "MERDEKA";
     return "TIDAK DIKENAL";
 }
 
-bool validasiNusantara(const string& number) {
+bool validasi(const string& s) {
     int total = 0;
-    bool doubleIt = false;
+    bool gandakan = false;
 
-    for (int i = number.length() - 1; i >= 0; i--) {
-        int digit = number[i] - '0';
-        if (doubleIt) {
+    for (int i = s.length() - 1; i >= 0; i--) {
+        int digit = s[i] - '0';
+        if (gandakan) {
             digit *= 2;
             if (digit > 9)
                 digit -= 9;
         }
         total += digit;
-        doubleIt = !doubleIt;
+        gandakan = !gandakan;
     }
 
     return total % 10 == 0;
 }
 
 int main() {
-    string nomorKartu;
+    string kartu;
     cout << "Masukkan nomor kartu digital: ";
-    cin >> nomorKartu;
+    cin >> kartu;
 
-    if (!isDigitOnly(nomorKartu)) {
+    if (!hanya_angka(kartu)) {
         cout << "Nomor kartu harus hanya terdiri dari angka!" << endl;
         return 1;
     }
 
-    string tipe = getCardType(nomorKartu);
+    string tipe = tipe_kartu(kartu);
 
     if (tipe == "TIDAK DIKENAL") {
         cout << "Jenis kartu tidak dikenali!" << endl;
@@ -57,10 +57,10 @@ int main() {
 
     cout << "Jenis Kartu: " << tipe << endl;
 
-    if (validasiNusantara(nomorKartu)) {
-        cout << "Kartu valid menurut Algoritma Validasi Nusantara." << endl;
+    if (validasi(kartu)) {
+        cout << "Kartu valid." << endl;
     } else {
-        cout << "Kartu TIDAK valid menurut Algoritma Validasi Nusantara." << endl;
+        cout << "Kartu TIDAK valid." << endl;
     }
 
     return 0;
