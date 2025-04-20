@@ -5,11 +5,11 @@ int main() {
     int n;
     string s;
 
-    cin >> n;     // jumlah babak
-    cin >> s;     // string hasil pertandingan
+    cin >> n;     // input jumlah babak
+    cin >> s;     // input hasil pertandingan (dalam string)
 
-    int a = 0, b = 0;         // poin pemain a dan b
-    int sa = 0, sb = 0;       // streak kemenangan beruntun
+    int a = 0, b = 0;       // poin pemain a dan b
+    int sa = 0, sb = 0;     // streak kemenangan beruntun
 
     for (int i = 0; i < n; i++) {
         if (s[i] == 'A') {
