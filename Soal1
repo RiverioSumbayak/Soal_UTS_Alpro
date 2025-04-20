@@ -1,58 +1,62 @@
-#include <iostream>
-#include <string>
+#include <iostream>   
+#include <string>      
 using namespace std;
 
+// Fungsi untuk mengecek apakah string hanya terdiri dari angka
 bool hanya_angka(const string& s) {
     for (char c : s) {
-        if (!isdigit(c)) return false;
+        if (!isdigit(c)) return false;   // Jika ada karakter bukan angka, return false
     }
-    return true;
+    return true; // Semua karakter adalah angka
 }
 
+// Fungsi untuk menentukan jenis kartu berdasarkan panjang dan awalan nomor
 string tipe_kartu(const string& s) {
-    if (s.length() == 14 && s.substr(0, 2) == "65")
+    if (s.length() == 14 && s.substr(0, 2) == "65")         // Jika panjang 14 dan diawali 65
         return "NUSANTARA";
     else if (s.length() == 16 && 
-            (s.substr(0, 2) == "77" || s.substr(0, 2) == "78"))
+            (s.substr(0, 2) == "77" || s.substr(0, 2) == "78")) // Jika panjang 16 dan diawali 77 atau 78
         return "GARUDA";
-    else if (s.length() == 15 && s.substr(0, 2) == "91")
+    else if (s.length() == 15 && s.substr(0, 2) == "91")    // Jika panjang 15 dan diawali 91
         return "MERDEKA";
-    return "TIDAK DIKENAL";
+    return "TIDAK DIKENAL"; // Jika tidak sesuai semua kondisi di atas
 }
 
+// Fungsi validasi menggunakan algoritma mirip Luhn
 bool validasi(const string& s) {
-    int total = 0;
-    bool gandakan = false;
+    int total = 0;         // Menyimpan total penjumlahan
+    bool gandakan = false; // Penanda untuk menggandakan angka setiap dua digit dari belakang
 
+    // Iterasi dari digit terakhir ke pertama
     for (int i = s.length() - 1; i >= 0; i--) {
-        int digit = s[i] - '0';
+        int digit = s[i] - '0'; // Konversi karakter ke integer
         if (gandakan) {
-            digit *= 2;
+            digit *= 2;         // Gandakan digit
             if (digit > 9)
-                digit -= 9;
+                digit -= 9;     // Jika hasil > 9, kurangi 9
         }
-        total += digit;
-        gandakan = !gandakan;
+        total += digit;         // Tambahkan ke total
+        gandakan = !gandakan;   // Ganti status gandakan
     }
 
-    return total % 10 == 0;
+    return total % 10 == 0;     // Valid jika total habis dibagi 10
 }
 
 int main() {
     string kartu;
     cout << "Masukkan nomor kartu digital: ";
-    cin >> kartu;
+    cin >> kartu; // Input nomor kartu
 
     if (!hanya_angka(kartu)) {
         cout << "Nomor kartu harus hanya terdiri dari angka!" << endl;
-        return 1;
+        return 1; // Keluar dari program jika input tidak valid
     }
 
-    string tipe = tipe_kartu(kartu);
+    string tipe = tipe_kartu(kartu); // Menentukan tipe kartu
 
     if (tipe == "TIDAK DIKENAL") {
         cout << "Jenis kartu tidak dikenali!" << endl;
-        return 1;
+        return 1; // Keluar dari program jika tipe kartu tidak valid
     }
 
     cout << "Jenis Kartu: " << tipe << endl;
@@ -65,3 +69,37 @@ int main() {
 
     return 0;
 }
+
+/*
+Program ini digunakan untuk mengecek jenis dan validitas sebuah nomor kartu digital. Berikut tahapan yang dilakukan program:
+
+1. Input: Pengguna diminta memasukkan nomor kartu digital.
+
+2. Validasi Awal: Dicek apakah input hanya berisi angka.
+
+3. Identifikasi Tipe Kartu:
+
+- Panjang 14, awalan "65" → NUSANTARA
+
+- Panjang 16, awalan "77" atau "78" → GARUDA
+
+-Panjang 15, awalan "91" → MERDEKA
+
+- Selain itu → TIDAK DIKENAL
+
+4. Validasi Nomor Kartu: Menggunakan algoritma mirip Luhn Algorithm, yaitu:
+
+- Melakukan perhitungan terhadap digit-digit dari kanan ke kiri.
+
+- Setiap digit kedua dikalikan 2, dan jika hasilnya lebih dari 9 dikurangi 9.
+
+- Semua digit dijumlahkan, dan hasilnya harus habis dibagi 10 untuk dianggap valid.
+
+5. Output:
+
+- Menampilkan jenis kartu.
+
+- Memberikan informasi apakah kartu valid atau tidak.
+
+Kalau kamu mau versi ini dijadikan bahan ajar atau soal latihan, tinggal bilang aja, nanti bisa dibantu buatkan juga!
+*/
