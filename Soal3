@@ -65,3 +65,52 @@ int main() {
 
     return 0;
 }
+
+/*
+1.Input kode transaksi:
+Pengguna diminta memasukkan kode transaksi sepanjang 8 digit.
+
+2.Validasi:
+Program mengecek apakah panjang kode valid (harus 8 digit). Jika tidak, program akan menampilkan pesan kesalahan.
+
+3.Ekstraksi Kode:
+Kode dipecah menjadi tiga bagian utama:
+-2 digit pertama → Jenis hari
+-2 digit kedua → Jenis pelanggan
+-4 digit terakhir → Nilai belanja (dalam satuan Rp 100.000)
+
+4.Pemilihan Jenis Hari & Pelanggan (Percabangan if-else):
+Berdasarkan kode yang diinput, program akan menampilkan jenis hari dan jenis pelanggan.
+
+5.Perhitungan Poin:
+Poin dihitung dengan rumus : poin_per_100rb * jumlah_belanja_dalam_100rb
+Nilai poin_per_100rb tergantung pada kombinasi hari dan jenis pelanggan.
+
+6Output:
+Program mencetak hasil berupa:
+Jenis Hari
+-Jenis Pelanggan
+-Jumlah Belanja
+-Total Poin
+
+ketentuan : 
+-Digit ke-1 dan ke-2: Jenis hari
+
+01 → Hari Kerja (Senin–Jumat)
+
+02 → Akhir Pekan (Sabtu–Minggu)
+
+03 → Hari Libur Nasional
+
+-Digit ke-3 dan ke-4: Tipe pelanggan
+
+01 → Biasa
+
+02 → Member Silver
+
+03 → Member Gold
+
+-Digit ke-5 sampai ke-8: Jumlah belanja dalam kelipatan Rp100.000
+
+Contoh: 0150 → Rp15.000.000
+*/
