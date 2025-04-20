@@ -5,15 +5,15 @@ using namespace std;
 
 void hitungBiayaParkir(string kodeParkir, int jamKeluar) {
     // Ambil informasi dari kode parkir
-    int jenisKendaraan = stoi(kodeParkir.substr(0, 2));
-    int jamMasuk = stoi(kodeParkir.substr(2, 4));
-    string lokasiParkir = kodeParkir.substr(6, 4);
+    int jenisKendaraan = stoi(kodeParkir.substr(0, 2));       // Dua digit pertama: jenis kendaraan
+    int jamMasuk = stoi(kodeParkir.substr(2, 4));             // Empat digit berikutnya: jam masuk (format HHMM)
+    string lokasiParkir = kodeParkir.substr(6, 4);            // Empat digit terakhir: lokasi parkir
 
     // Konversi waktu masuk dan keluar ke format jam dan menit
-    int jamMasukH = jamMasuk / 100;
-    int jamMasukM = jamMasuk % 100;
-    int jamKeluarH = jamKeluar / 100;
-    int jamKeluarM = jamKeluar % 100;
+    int jamMasukH = jamMasuk / 100;        // Ambil jam dari jam masuk
+    int jamMasukM = jamMasuk % 100;        // Ambil menit dari jam masuk
+    int jamKeluarH = jamKeluar / 100;      // Ambil jam dari jam keluar
+    int jamKeluarM = jamKeluar % 100;      // Ambil menit dari jam keluar
 
     // Hitung total waktu parkir dalam menit
     int totalMenit = ((jamKeluarH * 60 + jamKeluarM) - (jamMasukH * 60 + jamMasukM));
@@ -79,3 +79,22 @@ int main() {
 
     return 0;
 }
+
+// Program ini digunakan untuk menghitung biaya parkir berdasarkan kode parkir dan jam keluar.
+// Format kode parkir terdiri dari 10 digit: 
+// - 2 digit pertama menunjukkan jenis kendaraan (10 = Mobil, 20 = Motor, 30 = Bus)
+// - 4 digit berikutnya adalah jam masuk dalam format HHMM
+// - 4 digit terakhir adalah nomor lokasi parkir
+
+// Fungsi `hitungBiayaParkir` akan:
+// 1. Mengambil dan menguraikan informasi dari kode parkir
+// 2. Menghitung durasi parkir dalam menit, lalu diubah menjadi jam
+// 3. Menentukan tarif berdasarkan jenis kendaraan
+// 4. Menghitung total biaya dengan tarif pertama dan tarif per jam berikutnya
+// 5. Menampilkan jenis kendaraan, waktu masuk & keluar, durasi, lokasi, dan total biaya
+
+// Program akan memvalidasi input waktu dan jenis kendaraan serta menghindari perhitungan negatif.
+// Contoh input kode parkir: "102359A001" berarti:
+// - Jenis kendaraan: 10 (Mobil)
+// - Waktu masuk: 23:59
+// - Lokasi: A001
