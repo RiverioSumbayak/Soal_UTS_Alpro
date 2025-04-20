@@ -13,26 +13,26 @@ int main() {
 
     for (int i = 0; i < n; i++) {
         if (s[i] == 'A') {
-            a += 3;
-            sa++;
-            sb = 0;
-            if (sa == 3) {
-                a += 2;
-                sa = 0;
+            a += 3;         // pemain A menang, tambah 3 poin
+            sa++;           // tambah streak A
+            sb = 0;         // reset streak B
+            if (sa == 3) {  // jika A menang 3 kali berturut-turut
+                a += 2;     // bonus 2 poin
+                sa = 0;     // reset streak A
             }
         } else if (s[i] == 'B') {
-            b += 3;
-            sb++;
-            sa = 0;
-            if (sb == 3) {
-                b += 2;
-                sb = 0;
+            b += 3;         // pemain B menang, tambah 3 poin
+            sb++;           // tambah streak B
+            sa = 0;         // reset streak A
+            if (sb == 3) {  // jika B menang 3 kali berturut-turut
+                b += 2;     // bonus 2 poin
+                sb = 0;     // reset streak B
             }
         } else if (s[i] == 'C') {
-            a++;
+            a++;            // seri, kedua pemain dapat 1 poin
             b++;
-            sa = 0;
-            sb = 0;
+            sa = 0;         // reset streak A
+            sb = 0;         // reset streak B
         }
     }
 
@@ -48,3 +48,30 @@ int main() {
 
     return 0;
 }
+
+/*
+ALGORITMA PENYELESAIAN PROGRAM:
+
+1. Input jumlah babak (n) dan hasil pertandingan dalam bentuk string (s), 
+   di mana setiap karakter mewakili hasil satu babak:
+   - 'A' untuk kemenangan pemain A
+   - 'B' untuk kemenangan pemain B
+   - 'C' untuk hasil seri
+
+2. Inisialisasi poin untuk kedua pemain (a dan b) ke 0, serta variabel 
+   untuk menghitung streak kemenangan beruntun (sa dan sb).
+
+3. Iterasi sepanjang string hasil pertandingan:
+   a. Jika pemain A menang, tambahkan 3 poin ke A, tambah streak A, reset streak B.
+      Jika streak A mencapai 3, tambahkan 2 poin bonus dan reset streak A.
+   b. Jika pemain B menang, tambahkan 3 poin ke B, tambah streak B, reset streak A.
+      Jika streak B mencapai 3, tambahkan 2 poin bonus dan reset streak B.
+   c. Jika hasil seri, tambahkan 1 poin ke masing-masing pemain dan reset kedua streak.
+
+4. Setelah iterasi, tampilkan total poin untuk kedua pemain.
+
+5. Tentukan pemenang berdasarkan perbandingan poin:
+   - Jika poin A lebih besar, pemain A menang.
+   - Jika poin B lebih besar, pemain B menang.
+   - Jika poin sama, hasil pertandingan seri.
+*/
