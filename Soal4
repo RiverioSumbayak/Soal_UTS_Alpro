@@ -36,15 +36,15 @@ int main() {
         }
     }
 
-    cout << "poin a: " << a << endl;
-    cout << "poin b: " << b << endl;
+    cout << "Poin A: " << a << endl;
+    cout << "Poin B: " << b << endl;
 
     if (a > b)
-        cout << "pemenangnya adalah pemain a" << endl;
+        cout << "Pemenangnya adalah pemain A" << endl;
     else if (b > a)
-        cout << "pemenangnya adalah pemain b" << endl;
+        cout << "Pemenangnya adalah pemain B" << endl;
     else
-        cout << "hasil pertandingan seri!" << endl;
+        cout << "Hasil pertandingan seri!" << endl;
 
     return 0;
 }
