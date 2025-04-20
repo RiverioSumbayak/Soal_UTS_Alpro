@@ -79,22 +79,23 @@ int main() {
 
     return 0;
 }
+/*
+Program ini digunakan untuk menghitung biaya parkir berdasarkan kode parkir dan jam keluar.
+Format kode parkir terdiri dari 10 digit: 
+- 2 digit pertama menunjukkan jenis kendaraan (10 = Mobil, 20 = Motor, 30 = Bus)
+- 4 digit berikutnya adalah jam masuk dalam format HHMM
+- 4 digit terakhir adalah nomor lokasi parkir
 
-// Program ini digunakan untuk menghitung biaya parkir berdasarkan kode parkir dan jam keluar.
-// Format kode parkir terdiri dari 10 digit: 
-// - 2 digit pertama menunjukkan jenis kendaraan (10 = Mobil, 20 = Motor, 30 = Bus)
-// - 4 digit berikutnya adalah jam masuk dalam format HHMM
-// - 4 digit terakhir adalah nomor lokasi parkir
+Fungsi `hitungBiayaParkir` akan:
+1. Mengambil dan menguraikan informasi dari kode parkir
+2. Menghitung durasi parkir dalam menit, lalu diubah menjadi jam
+3. Menentukan tarif berdasarkan jenis kendaraan
+4. Menghitung total biaya dengan tarif pertama dan tarif per jam berikutnya
+5. Menampilkan jenis kendaraan, waktu masuk & keluar, durasi, lokasi, dan total biaya
 
-// Fungsi `hitungBiayaParkir` akan:
-// 1. Mengambil dan menguraikan informasi dari kode parkir
-// 2. Menghitung durasi parkir dalam menit, lalu diubah menjadi jam
-// 3. Menentukan tarif berdasarkan jenis kendaraan
-// 4. Menghitung total biaya dengan tarif pertama dan tarif per jam berikutnya
-// 5. Menampilkan jenis kendaraan, waktu masuk & keluar, durasi, lokasi, dan total biaya
-
-// Program akan memvalidasi input waktu dan jenis kendaraan serta menghindari perhitungan negatif.
-// Contoh input kode parkir: "102359A001" berarti:
-// - Jenis kendaraan: 10 (Mobil)
-// - Waktu masuk: 23:59
-// - Lokasi: A001
+Program akan memvalidasi input waktu dan jenis kendaraan serta menghindari perhitungan negatif.
+Contoh input kode parkir: "102359A001" berarti:
+- Jenis kendaraan: 10 (Mobil)
+- Waktu masuk: 23:59
+- Lokasi: A001
+*/
